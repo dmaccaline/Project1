@@ -12,18 +12,53 @@ int main(int argc, char** argv) {
 
 
     cout << "Parent pid is " << pid << endl;
+
+    //used to track which proccess is started
+    int tracker = 0;
     for(int i = 0; i < user_proc; i++) { //for loop to create child processes
         if (pid != 0) {
             pid = fork();
             child_num[i] = pid;
         }
+        tracker++;
+
+        if (pid == 0) { //pid == 0 within child process, child prints its own pid
+            cout << "Started child with pid " << getpid() << endl;
+
+            //switch statement with tracker to determine which test should be started on child
+            //TODO replace each cout below with execlp call to start each test
+            switch(tracker) {
+                case 1:
+                    cout << "Started with pid " << getpid() << " Starting test1" << endl;
+                    break;
+                case 2:
+                    cout << "Started with pid " << getpid() << " Starting test2" << endl;
+                    // code block
+                    break;
+                case 3:
+                    cout << "Started with pid " << getpid() << " Starting test3" << endl;
+                    // code block
+                    break;
+                case 4:
+                    cout << "Started with pid " << getpid() << " Starting test4" << endl;
+                    // code block
+                    break;
+                case 5:
+                    cout << "Started with pid " << getpid() << " Starting test5" << endl;
+                    // code block
+                    break;
+            }
+
+            break;
+        }
+        //once all 5 programs have been started, reset to beginning
+        if(tracker == 5){
+            tracker = 0;
+        }
     }
+
     
-    if (pid == 0) { //pid == 0 within child process, child prints its own pid
-        cout << "Started child with pid " << getpid() << endl;
-    }
-    
-    else if (pid > 0) { //pid > 0 within parent process, waits for child to finish
+    if (pid > 0) { //pid > 0 within parent process, waits for child to finish
         while(n_processes < user_proc) { //while the number of running processes is less than the amount the user requested
             pid_t child_pid = wait(NULL);
             if(child_pid > 0) { //needed to include this to prevent invalid PIDs of -1? not sure why
