@@ -29,23 +29,24 @@ int main(int argc, char** argv) {
             //TODO replace each cout below with execlp call to start each test
             switch(tracker) {
                 case 1:
-                    cout << "Started with pid " << getpid() << " Starting test1" << endl;
+                    execl("./test1", "test1", nullptr);
+                    cout << "Error starting child " << getpid() << endl;
                     break;
                 case 2:
-                    cout << "Started with pid " << getpid() << " Starting test2" << endl;
-                    // code block
+                    execl("./test2", "test2", nullptr);
+                    cout << "Error starting child " << getpid() << endl;
                     break;
                 case 3:
-                    cout << "Started with pid " << getpid() << " Starting test3" << endl;
-                    // code block
+                    execl("./test3", "test3", nullptr);
+                    cout << "Error starting child " << getpid() << endl;
                     break;
                 case 4:
-                    cout << "Started with pid " << getpid() << " Starting test4" << endl;
-                    // code block
+                    execl("./test4", "test4", nullptr);
+                    cout << "Error starting child " << getpid() << endl;
                     break;
                 case 5:
-                    cout << "Started with pid " << getpid() << " Starting test5" << endl;
-                    // code block
+                    execl("./test5", "test5", nullptr);
+                    cout << "Error starting child " << getpid() << endl;
                     break;
             }
 
