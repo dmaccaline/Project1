@@ -1,4 +1,5 @@
 #include "prog1_functions.hpp"
+#include <errno.h>
 
 int main(int argc, char** argv) {
 
@@ -9,6 +10,7 @@ int main(int argc, char** argv) {
     int child_num[25]; //array to hold the child number
     //can expect max. 25 children per the spec (section 3c.)
     int n_processes = 0; //counts number of finished child processes
+    int error;
 
 
     cout << "Parent pid is " << pid << endl;
@@ -31,22 +33,32 @@ int main(int argc, char** argv) {
                 case 1:
                     execl("./test1", "test1", nullptr);
                     cout << "Error starting child " << getpid() << endl;
+                    error = errno;
+                    cout << error << endl;
                     break;
                 case 2:
                     execl("./test2", "test2", nullptr);
                     cout << "Error starting child " << getpid() << endl;
+                    error = errno;
+                    cout << error << endl;
                     break;
                 case 3:
                     execl("./test3", "test3", nullptr);
                     cout << "Error starting child " << getpid() << endl;
+                    error = errno;
+                    cout << error << endl;
                     break;
                 case 4:
                     execl("./test4", "test4", nullptr);
                     cout << "Error starting child " << getpid() << endl;
+                    error = errno;
+                    cout << error << endl;
                     break;
                 case 5:
                     execl("./test5", "test5", nullptr);
                     cout << "Error starting child " << getpid() << endl;
+                    error = errno;
+                    cout << error << endl;
                     break;
             }
 
