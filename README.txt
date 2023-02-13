@@ -14,6 +14,6 @@ To build:
 4.) cmake --build .
 
 To Run:
-in directory containing the files, run the command: 
+in the build directory made with the above commands, run the command:
 
 ./progtam_1 <int>
